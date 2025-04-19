@@ -1,10 +1,10 @@
 //built connection of mongodb with node.js
 //import db
 const mongoose=require('mongoose');
-
+require('dotenv').config();
 //const mongoURL=process.env.MONGODB_URL;
 const mongoURL=process.env.MONGODB_URL_LOCAL;
-require('dotenv').config();
+
 //define the mongodb connection url
 //const mongoURL=''//replace my db with your db name and this is local url
 //const mongoURL= '' //this is remote or online url
