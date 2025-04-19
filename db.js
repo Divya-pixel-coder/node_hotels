@@ -2,9 +2,12 @@
 //import db
 const mongoose=require('mongoose');
 
+//const mongoURL=process.env.MONGODB_URL;
+const mongoURL=process.env.MONGODB_URL_LOCAL;
+require('dotenv').config();
 //define the mongodb connection url
-const mongoURL='mongodb://localhost:27017/hotels'//replace my db with your db name
-
+//const mongoURL='mongodb://localhost:27017/hotels'//replace my db with your db name and this is local url
+//const mongoURL= 'mongodb+srv://DivyaSharma:divya805@cluster0.urt6dte.mongodb.net/' //this is remote or online url
 //set up the mdb connection/establish
 mongoose.connect(mongoURL,{
     useNewURLParser:true,
