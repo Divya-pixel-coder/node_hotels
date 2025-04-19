@@ -96,7 +96,7 @@ router.delete('/:id',async(req,res)=>{
   }
 })
 //comment added for purpose
-
+//comment pull
     module.exports=router;
   
  
