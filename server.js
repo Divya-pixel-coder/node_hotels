@@ -2,15 +2,28 @@ const express = require('express')
 const app = express();
 const db =require('./db');
 require('dotenv').config();
+const passport =require('./auth');
 
 const bodyParser=require('body-parser');
 app.use(bodyParser.json());//stores in req.body
 
 const PORT=process.env.PORT || 3000;
 
+//middleware function=req ke just baad or res se just phle
+const logRequest=(req,res,next)=>{
+  console.log(`[${new Date().toLocaleString()}] Request made to: ${req.originalUrl}`);
+  next();//move on to the next phase,without this it will not handle response only handle middleware
+}
 
 
-app.get('/', function (req, res) {
+app.use(logRequest);//for all we can use logRequest
+
+
+
+app.use(passport.initialize());
+
+const localAuthMiddleware=passport.authenticate('local',{session:false})
+app.get('/',localAuthMiddleware, function (req, res) {
   res.send('welcome to my hotel... how i can help u')
 })
 //post route to add a person
@@ -86,7 +99,7 @@ const personRoutes=require('./routes/personRoutes');
 const menuItemRoutes=require('./routes/menuItemRoutes');
 
 //use the routers
-app.use('/person',personRoutes);
+app.use('/person',localAuthMiddleware,personRoutes);
 app.use('/menuitems',menuItemRoutes);
 
 

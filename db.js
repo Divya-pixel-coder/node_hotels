@@ -2,8 +2,8 @@
 //import db
 const mongoose=require('mongoose');
 require('dotenv').config();
-const mongoURL=process.env.MONGODB_URL;
-//const mongoURL=process.env.MONGODB_URL_LOCAL;
+//const mongoURL=process.env.MONGODB_URL;
+const mongoURL=process.env.MONGODB_URL_LOCAL;
 
 //define the mongodb connection url
 //const mongoURL=''//replace my db with your db name and this is local url
